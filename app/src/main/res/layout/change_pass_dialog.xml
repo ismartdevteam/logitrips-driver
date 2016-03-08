@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/orange"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/change_pass"
+            android:textColor="@android:color/white"
+
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/change_pass_dismiss"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="10dp"
+
+            android:text="X"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/current_password"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="5dp">
+
+            <EditText
+                android:id="@+id/current_pass"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingRight="25dp"
+                android:singleLine="true"
+                android:text="tamiraa"
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:id="@+id/show_current_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:src="@drawable/show_pass_dark" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="@string/new_password"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="5dp">
+
+            <EditText
+                android:id="@+id/new_password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+
+
+                android:inputType="textPassword"
+                android:maxLines="1"
+
+                android:paddingRight="25dp"
+                android:singleLine="true"
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:id="@+id/show_new_pass_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:src="@drawable/show_pass_dark" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/conf_new_password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+
+
+                android:hint="@string/confirm_new_password"
+                android:inputType="textPassword"
+                android:maxLines="1"
+
+                android:paddingRight="25dp"
+                android:singleLine="true"
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:id="@+id/show_confirm_new_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:src="@drawable/show_pass_dark" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/change_my_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/oval_btn"
+        android:text="@string/apply_filter"
+        android:textColor="@android:color/white" />
+
+
+</LinearLayout>

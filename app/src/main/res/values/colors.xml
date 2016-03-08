@@ -1,0 +1,21 @@
+<resources>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="half_opacity_white">#80FFFFFF</color>
+    <color name="orange">#fe7e17</color>
+    <color name="text_gray">#c5c9cd</color>
+    <color name="menu_back">#000206</color>
+    <color name="chat_text_gray">#97a0a7</color>
+    <color name="chat_text_orange">#ffc5a7</color>
+
+    <color name="label_text">#eeeeee</color>
+    <color name="status_green">#D956d20b</color>
+    <color name="status_orange">#D9fe7e17</color>
+    <color name="nav_back">#202020</color>
+    <color name="nav_back_sel">#1a1a1a</color>
+    <color name="booked">#f1c40f</color>
+    <color name="confirmed">#2ecc71</color>
+    <color name="declined">#e74c3c</color>
+    <color name="canceled">#c0392b</color>
+    <color name="finished">#27ae60</color>
+</resources>
