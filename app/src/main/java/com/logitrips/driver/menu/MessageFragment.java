@@ -18,6 +18,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.logitrips.driver.MainActivity;
 import com.logitrips.driver.R;
 import com.logitrips.driver.adapter.MessagesRecyclerViewAdapter;
 import com.logitrips.driver.detail.MessageDetailAc;
@@ -93,13 +94,11 @@ public class MessageFragment extends Fragment {
 //                .build();
 
 
-        actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
 //        actionBar.setHomeAsUpIndicator(R.drawable.menu_message_orange);
 //        actionBar.setDisplayShowTitleEnabled(true);
 //        actionBar.setDisplayShowCustomEnabled(false);
         actionBar.setTitle(R.string.messages);
-
-
 
         Context context = view.getContext();
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.messenger_list);
@@ -119,27 +118,35 @@ public class MessageFragment extends Fragment {
                         b.putString("driver_name", message.getDriver_name());
                         b.putString("auth", mParam2);
                         b.putString("profile_pic", message.getProfile_pic());
+
                         intent.putExtras(b);
                         startActivity(intent);
 
                     }
                 })
         );
-        getData(mParam1, mParam2);
+
         return view;
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-
     }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        logiMessages.clear();
+        mAdapter.notifyDataSetChanged();
+        getData(mParam1, mParam2);
+    }
+
 
     private void getData(String mParam1, final String mParam2) {
         if (!Utils.isNetworkAvailable(getActivity())) {

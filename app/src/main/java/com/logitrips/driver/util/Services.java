@@ -112,6 +112,7 @@ public class Services {
                             JSONObject userObj = response.getJSONObject("data");
                             edit.putInt("user_id", userObj.getInt("driver_id"));
                             edit.putString("phone", userObj.getString("phone"));
+                            edit.putString("email",email);
                             edit.putString("name", userObj.getString("name"));
                             edit.putString("profile_pic_url", userObj.getString("profile_pic_url"));
                             edit.putString("auth_key", userObj.getString("auth_key"));
@@ -165,7 +166,7 @@ public class Services {
 
     }
 
-    public static void createOffday(final AppCompatActivity ac, final String startDate, final String endDate, final String reason, final String driver_id) {
+    public static void createOffday(final AppCompatActivity ac, final String date, final String startTime, final String endTime, final String reason, final String driver_id) {
         if (!Utils.isNetworkAvailable(ac.getApplicationContext())) {
             Toast.makeText(ac.getApplicationContext(), R.string.no_net, Toast.LENGTH_SHORT).show();
             return;
@@ -209,8 +210,9 @@ public class Services {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("driver_id", driver_id + "");
-                params.put("date_start", startDate + "");
-                params.put("date_end", endDate + "");
+                params.put("date", date + "");
+                params.put("time_start", startTime + "");
+                params.put("time_end", endTime + "");
                 params.put("reason", reason + "");
                 return params;
             }

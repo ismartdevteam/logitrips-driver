@@ -1,5 +1,9 @@
 <resources>
+
+
+
     <string name="app_name">Logitrips Driver</string>
+    <string name="google_app_id">208010012022</string>
 
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
@@ -21,7 +25,10 @@
     <string name="car_model">Car model</string>
     <string name="car_year">Car year</string>
     <string name="price_per_hour">Price per hour</string>
+
     <string name="select_off_days_and_reason">Select busy days in this month and write \nreason on choosen days</string>
+    <string name="select_date_take_reason">Select date to take reason</string>
+    <string name="remove_off_day">Remove off day</string>
 
     <!-- Strings related to login -->
     <string name="no_comment">No comment</string>
@@ -46,6 +53,7 @@
     <string name="your_trip">Your trip</string>
     <string name="your_fullname">Your fullname</string>
     <string name="your_email">Your e-mail address</string>
+    <string name="address">Address</string>
     <string name="your_phone">Your phone number</string>
     <string name="start_date">Start date</string>
     <string name="end_date">End date</string>
@@ -54,6 +62,7 @@
     <string name="car">Car</string>
     <string name="driver">Driver</string>
     <string name="total_price">Total price</string>
+    <string name="total_fee">Total fee</string>
     <string name="trip_info">Trip info</string>
     <string name="date">Date</string>
     <string name="duration">Duration</string>
@@ -63,6 +72,10 @@
     <string name="book_this_car">Book this car</string>
     <string name="changed_password_successfully">Successfully changed password</string>
     <string name="create_off_successfully">Successfully created off days</string>
+    <string name="successfully_approved">Successfully approved</string>
+    <string name="successfully_desclined">Successfully declined</string>
+    <string name="select_location">Please select location</string>
+    <string name="delete_off_successfully">Successfully deleted</string>
     <string name="incorrect_current">Current password incorrect</string>
     <string name="no_available_trips">No available trips</string>
     <string name="no_available_cars">No available cars</string>
@@ -76,15 +89,20 @@
     <string name="lastname">lastname</string>
     <string name="phone">phone</string>
     <string name="or_sign_in">or sign with</string>
+    <string name="reason">Reason</string>
     <string name="main_url">http://dev.logitrips.com</string>
     <string name="phone_cap">Phone</string>
+    <string name="write_reason">Write a reason</string>
     <string name="approved">Approved</string>
+    <string name="approve">Approve</string>
+    <string name="set_start_end_time">Set start and end time</string>
     <string name="current_password">Current password</string>
     <string name="new_password">New password</string>
     <string name="enter_valid_date">Please enter valid Date</string>
     <string name="confirm_new_password">confirm new password</string>
     <string name="change_my_pass">change my password</string>
     <string name="account">Account</string>
+    <string name="create">Create</string>
     <string name="status">Status</string>
     <string name="password_cap">Password</string>
     <string name="save">Save</string>
@@ -110,6 +128,7 @@
     <string name="pick_up_time">Pick up time</string>
     <string name="drop_loc">Drop location</string>
     <string name="trip_detail">Trip detail</string>
+    <string name="trip_details">Trip details</string>
     <string name="drop_time">Drop off time</string>
     <string name="forget_password">forgot password?</string>
     <string name="prompt_email">Email Address</string>
@@ -141,9 +160,8 @@
     <string name="title_activity_car_detail">CarDetailAc</string>
     <string name="title_activity_tourist_info">TouristInfo</string>
     <string name="title_activity_trip_detail_cancel">TripDetailCancel</string>
-    <string name="legal_text">This app determines your phone’s location and shares it with Google in older to serve personalized alerts to you.This allows for a better overall app experience. This app determines your phone’s location and shares it with Google in older to serve personalized alerts to you.This allows for a better overall app experience.This app determines your phone’s location and shares it with Google in older to serve personalized alerts to you.
-
-This allows for a better overall app experience.This app determines your phone’s location and shares it with Google in older to serve personalized alerts to you.This allows for a better overall app experience.This app determines your phone’s location and shares it with Google in older to serve personalized alerts to you.This allows for a better overall app experience.This app determines your phone’s location and shares it with Google in older to serve personalized alerts to you.This allows for a better overall app experience.
-This app determines your phone’s location and shares it with Google in older to serve personalized alerts to you.This allows for a better overall app experience.</string>
     <string name="title_activity_off_days">Off days</string>
+    <string name="title_activity_create_off_day">CreateOffDay</string>
+    <string name="title_activity_create_off">CreateOff</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

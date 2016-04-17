@@ -24,8 +24,6 @@
          Google Maps Android API v2, but are recommended.
     -->
 
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -52,7 +50,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -83,7 +81,41 @@
         <activity
             android:name=".detail.OffDays"
             android:label="@string/title_activity_off_days"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".detail.CreateOffDay"
+            android:label="@string/title_activity_create_off_day"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".detail.TripDetailAc"
+            android:label="@string/title_activity_trip_detail_cancel"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD8ev9-9p5d8XSMT-XNr9fQ8UaO_79IfHw" />
+
+        <activity
+            android:name=".detail.MapsActivity"
+            android:label="@string/title_activity_maps">
+
+            <!-- ATTENTION: This intent was auto-generated. Follow instructions at
+              https://g.co/AppIndexing/AndroidStudio to publish your Android app deep links. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- ATTENTION: This data URL was auto-generated. We recommend that you use the HTTP scheme.
+                  TODO: Change the host or pathPrefix as necessary. -->
+                <data
+                    android:host="driver.logitrips.com"
+                    android:pathPrefix="/maps"
+                    android:scheme="http" />
+            </intent-filter>
+
+
+        </activity>
     </application>
 
 </manifest>

@@ -51,6 +51,8 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
 
     private TextView phone;
     private TextView change_pass;
+    private TextView address;
+    private TextView location;
 //    private Button logout;
     private CircleImageView image;
     private ImageLoader mImageLoader;
@@ -94,7 +96,9 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         name = (TextView) view.findViewById(R.id.account_name);
 
         email = (TextView) view.findViewById(R.id.account_email);
+        location = (TextView) view.findViewById(R.id.account_location);
         phone = (TextView) view.findViewById(R.id.account_phone);
+        address = (TextView) view.findViewById(R.id.account_address);
         change_pass = (TextView) view.findViewById(R.id.account_change_password);
 //        logout=(Button) view.findViewById(R.id.account_log_out);
 
@@ -109,9 +113,11 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     private void init(){
         sp=getActivity().getSharedPreferences("user", 1);
         image.setImageUrl(sp.getString("profile_pic_url",""),mImageLoader);
-        name.setText(sp.getString("name",""));
+        name.setText(sp.getString("name", ""));
         email.setText(sp.getString("email",""));
         phone.setText(sp.getString("phone",""));
+        address.setText(sp.getString("address",""));
+        location.setText(sp.getString("city",""));
     }
     @Override
     public void onClick(View v) {

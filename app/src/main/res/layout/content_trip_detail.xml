@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+    tools:context=".detail.TripDetailAc"
+    tools:showIn="@layout/activity_trip_detail">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/trip_det_image"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:padding="10dp">
+
+            <com.logitrips.driver.util.CircleImageView
+                android:id="@+id/trip_det_driver_img"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/nodriver"
+                app:border_color="@android:color/transparent"
+                app:border_width="0dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_toRightOf="@+id/trip_det_driver_img"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/trip_det_driver_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:singleLine="true"
+
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/trip_det_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:singleLine="true"
+              />
+
+                <TextView
+                    android:id="@+id/trip_det_status"
+                    android:layout_width="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:singleLine="true"
+                />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:paddingLeft="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/destination"
+                    android:textColor="@color/text_gray" />
+
+                <TextView
+                    android:id="@+id/trip_det_destination"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/cancel_trip"
+                    android:textColor="@android:color/background_dark" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/pick_up_loc"
+                    android:textColor="@color/text_gray" />
+
+                <TextView
+                    android:id="@+id/trip_det_pick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/cancel_trip"
+                    android:textColor="@android:color/background_dark" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/trip_dates"
+                    android:textColor="@color/text_gray" />
+
+                <TextView
+                    android:id="@+id/trip_det_dates"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/cancel_trip"
+                    android:textColor="@android:color/background_dark" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/total_fee"
+                    android:textColor="@color/text_gray" />
+
+                <TextView
+                    android:id="@+id/trip_det_fee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@android:color/background_dark" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:id="@+id/trip_det_booking_label"
+            android:textColor="@color/orange"
+            android:text="@string/trip_details"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:id="@+id/trip_det_records"
+            android:padding="15dp"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/trip_det_button_lin"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/trip_det_decline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/decline"
+                android:background="@android:color/white"
+                android:textColor="@color/text_gray" />
+
+            <Button
+                android:id="@+id/trip_det_approve"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:paddingLeft="5dp"
+                android:background="@android:color/white"
+                android:paddingRight="5dp"
+                android:text="@string/approve"
+                android:textColor="@color/orange" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView >

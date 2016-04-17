@@ -2,18 +2,18 @@ package com.logitrips.driver.menu;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.logitrips.driver.R;
 import com.logitrips.driver.adapter.TripListRecyclerViewAdapter;
+import com.logitrips.driver.detail.TripDetailAc;
 import com.logitrips.driver.model.Trip;
+import com.logitrips.driver.model.BookingDetails;
 import com.logitrips.driver.util.RecyclerItemClickListener;
 
 import org.json.JSONArray;
@@ -79,13 +79,16 @@ public class TripListFragment extends Fragment {
             trip.setEnd_date(item.getString("end_date"));
             trip.setTrip_status(item.getInt("trip_status"));
             if (!item.isNull("total_fee"))
-                trip.setTotal_fee(item.getDouble("total_fee"));
+                trip.setTotal_fee(item.getString("total_fee"));
             trip.setTime_pick(item.getString("time_pick"));
             trip.setDuration(item.getString("duration"));
             trip.setLocation_drop(item.getString("location_drop"));
             trip.setLocation_pick(item.getString("location_pick"));
             trip.setTime_drop(item.getString("time_drop"));
             trip.setBooking_date(item.getString("booking_date"));
+            JSONArray booking_detail = item.getJSONArray("booking_detail");
+
+            trip.setDetails(booking_detail.toString());
             Date date = new Date();
 
             try {
@@ -124,9 +127,10 @@ public class TripListFragment extends Fragment {
             recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(context, new RecyclerItemClickListener.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position) {
-//                        Intent intent = new Intent(getActivity(), TripDetailAc.class);
-//                        intent.putExtra("Trip", lists.get(position));
-//                        startActivity(intent);
+                    getActivity().finish();
+                    Intent intent = new Intent(getActivity(), TripDetailAc.class);
+                    intent.putExtra("Trip",lists.get(position));
+                    startActivity(intent);
                 }
             }));
         } catch (JSONException e) {

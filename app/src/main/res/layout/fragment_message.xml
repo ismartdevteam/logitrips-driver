@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
+    android:background="@android:color/white"
     tools:context="com.logitrips.driver.menu.MessageFragment">
 
 
@@ -25,10 +26,12 @@
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/messenger_list"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
                 android:name="com.logitrips.userapp.menu.MessageFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
+
                 app:layoutManager="LinearLayoutManager"
                 tools:context="com.logitrips.userapp.menu.MessageFragment"
                 tools:listitem="@layout/messenger_item" />

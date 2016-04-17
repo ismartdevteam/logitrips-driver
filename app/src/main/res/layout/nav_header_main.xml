@@ -15,8 +15,10 @@
 
         <com.logitrips.driver.util.CircleImageView
             android:id="@+id/nav_header_driver_img"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="20dp"
  />
 
         <TextView
@@ -34,13 +36,13 @@
             android:textColor="@android:color/white"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/nav_header_camera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:padding="10dp"
-            android:src="@drawable/ic_camera_btn" />
+        <!--<ImageView-->
+            <!--android:id="@+id/nav_header_camera"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:padding="10dp"-->
+            <!--android:src="@drawable/ic_camera_btn" />-->
     </RelativeLayout>
 </LinearLayout>

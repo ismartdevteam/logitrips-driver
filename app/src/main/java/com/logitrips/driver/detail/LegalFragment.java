@@ -4,21 +4,33 @@ import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.logitrips.driver.R;
+import com.logitrips.driver.util.CustomRequest;
+import com.logitrips.driver.util.MySingleton;
+import com.logitrips.driver.util.Utils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class LegalFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-
-
-
-
-    private OnFragmentInteractionListener mListener;
+    private TextView legal_text;
 
     public LegalFragment() {
         // Required empty public constructor
@@ -32,50 +44,50 @@ public class LegalFragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_legal, container, false);
+        View v = inflater.inflate(R.layout.fragment_legal, container, false);
+        legal_text = (TextView) v.findViewById(R.id.legal_text);
+        getData();
+        return v;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+    private void getData() {
+        if (!Utils.isNetworkAvailable(getActivity())) {
+            Toast.makeText(getActivity(), R.string.no_net, Toast.LENGTH_SHORT).show();
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            CustomRequest loginReq = new CustomRequest(Request.Method.GET,
+                    getString(R.string.main_url) + "/mobiledriver/getsettings", null, new Response.Listener<JSONObject>() {
+
+                @Override
+                public void onResponse(JSONObject response) {
+                    Log.e("legal response", response.toString());
+                    try {
+                        legal_text.setText(response.getString("legal"));
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+
+            }, new Response.ErrorListener() {
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    // TODO Auto-generated method stub
+                    Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            });
+            MySingleton.getInstance(getActivity()).addToRequestQueue(loginReq);
         }
+
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 }

@@ -108,8 +108,10 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_margin="10dp"
+            android:visibility="gone"
             android:background="@color/text_gray"/>
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:padding="10dp"
             android:layout_height="wrap_content"
@@ -169,9 +171,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_gray"
-                android:text="@string/sub_location"/>
+                android:text="@string/address"/>
             <TextView
-                android:id="@+id/account_sub_loc"
+                android:id="@+id/account_address"
                 android:paddingLeft="10dp"
                 android:gravity="right"
                 android:textStyle="bold"
@@ -183,9 +185,9 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:layout_margin="10dp"
+            android:layout_margin="10dp"     android:visibility="gone"
             android:background="@color/text_gray"/>
-        <LinearLayout
+        <LinearLayout     android:visibility="gone"
             android:layout_width="match_parent"
             android:padding="10dp"
             android:layout_height="wrap_content"
@@ -206,11 +208,11 @@
                 />
         </LinearLayout>
         <View
-            android:layout_width="match_parent"
+            android:layout_width="match_parent"     android:visibility="gone"
             android:layout_height="1px"
             android:layout_margin="10dp"
             android:background="@color/text_gray"/>
-        <LinearLayout
+        <LinearLayout     android:visibility="gone"
             android:layout_width="match_parent"
             android:padding="10dp"
             android:layout_height="wrap_content"
@@ -230,12 +232,12 @@
                 android:layout_height="wrap_content"
                 />
         </LinearLayout>
-        <View
+        <View     android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_margin="10dp"
             android:background="@color/text_gray"/>
-        <LinearLayout
+        <LinearLayout     android:visibility="gone"
             android:layout_width="match_parent"
             android:padding="10dp"
             android:layout_height="wrap_content"
@@ -255,12 +257,12 @@
                 android:layout_height="wrap_content"
                 />
         </LinearLayout>
-        <View
+        <View     android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_margin="10dp"
             android:background="@color/text_gray"/>
-        <LinearLayout
+        <LinearLayout     android:visibility="gone"
             android:layout_width="match_parent"
             android:padding="10dp"
             android:layout_height="wrap_content"
@@ -280,12 +282,12 @@
                 android:layout_height="wrap_content"
                 />
         </LinearLayout>
-        <View
+        <View     android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_margin="10dp"
             android:background="@color/text_gray"/>
-        <LinearLayout
+        <LinearLayout     android:visibility="gone"
             android:layout_width="match_parent"
             android:padding="10dp"
             android:layout_height="wrap_content"
@@ -305,12 +307,12 @@
                 android:layout_height="wrap_content"
                 />
         </LinearLayout>
-        <View
+        <View     android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_margin="10dp"
             android:background="@color/text_gray"/>
-        <LinearLayout
+        <LinearLayout     android:visibility="gone"
             android:layout_width="match_parent"
             android:padding="10dp"
             android:layout_height="wrap_content"

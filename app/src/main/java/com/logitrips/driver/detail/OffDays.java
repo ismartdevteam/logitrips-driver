@@ -1,8 +1,11 @@
 package com.logitrips.driver.detail;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -12,6 +15,9 @@ import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -36,7 +42,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 public class OffDays extends AppCompatActivity {
     private CalendarPickerView calendar;
@@ -44,19 +53,20 @@ public class OffDays extends AppCompatActivity {
     private String driver_id = "";
     private List<OffDay> offDayList;
     private List<Date> dates;
-    private List<String> reasons;
     SimpleDateFormat format = new SimpleDateFormat("yyyy-M-dd");
+    SimpleDateFormat Fullformat = new SimpleDateFormat("dd MMMM  yyyy", Locale.US);
     private ProgressDialog progressDialog;
+    private Button removeDay;
+    private int pos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_off_days);
-         progressDialog = ProgressDialog.show(this,
+        progressDialog = ProgressDialog.show(this,
                 "", getString(R.string.loading));
         offDayList = new ArrayList<OffDay>();
         dates = new ArrayList<Date>();
-        reasons = new ArrayList<String>();
         b = getIntent().getExtras();
         driver_id = b.getString("driver_id", "0");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -73,37 +83,94 @@ public class OffDays extends AppCompatActivity {
         Date today = new Date();
         calendar.init(new Date(today.getMonth() - 1), nextYear.getTime())
                 .withSelectedDate(today)
-                .inMode(CalendarPickerView.SelectionMode.RANGE);
+                .inMode(CalendarPickerView.SelectionMode.SINGLE);
 
         getData(driver_id);
-        calendar.setOnDateSelectedListener(new CalendarPickerView.OnDateSelectedListener() {
-            @Override
-            public void onDateSelected(Date date) {
 
-            }
-
-            @Override
-            public void onDateUnselected(Date date) {
-
-            }
-        });
         calendar.setFilterText("select not highlighted dates");
 
         calendar.setDateSelectableFilter(new CalendarPickerView.DateSelectableFilter() {
             @Override
             public boolean isDateSelectable(Date date) {
                 if (dates.contains(date)) {
-                    int pos = dates.indexOf(date);
-
-                    Snackbar.make(calendar, reasons.get(pos), Snackbar.LENGTH_LONG)
+                    pos = dates.indexOf(date);
+                    OffDay offDay = offDayList.get(pos);
+                    Snackbar.make(calendar, offDay.getReason()+" "+offDay.getTime_start()+" - " +offDay.getTime_end(), Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
-                    return false;
+                    removeDay.setEnabled(true);
+                    return true;
                 } else {
+                    removeDay.setEnabled(false);
                     return true;
                 }
 
             }
         });
+        removeDay = (Button) findViewById(R.id.off_remove_day);
+        removeDay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteOffday(offDayList.get(pos));
+            }
+        });
+    }
+
+    private void deleteOffday(final OffDay off) {
+        if (!Utils.isNetworkAvailable(OffDays.this)) {
+            Toast.makeText(getApplicationContext(), R.string.no_net, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        final ProgressDialog progressDialog = ProgressDialog.show(OffDays.this,
+                "", getString(R.string.loading));
+        CustomRequest request = new CustomRequest(Request.Method.POST,
+                getString(R.string.main_url) + "/mobiledriver/deleteoffday", null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("create off day res", response.toString());
+                try {
+                    switch (response.getInt("response")) {
+                        case 200:
+                            Toast.makeText(getApplicationContext(), R.string.delete_off_successfully, Toast.LENGTH_SHORT).show();
+                            offDayList.remove(off);
+                            dates.remove(pos);
+                            calendar.clearHighlightedDates();
+                            calendar.highlightDates(dates);
+                            break;
+
+                        default:
+                            Toast.makeText(getApplicationContext(), R.string.error_request, Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                progressDialog.dismiss();
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // TODO Auto-generated method stub
+                Log.i("error", error.getMessage() + "");
+                progressDialog.dismiss();
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("offday_id", off.getOffday_id() + "");
+
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+
+
     }
 
     @Override
@@ -112,40 +179,24 @@ public class OffDays extends AppCompatActivity {
             onBackPressed();
         }
         if (item.getItemId() == R.id.action_off_days) {
+
             if (calendar.getSelectedDates().size() > 0) {
-                final List<Date> selDates = calendar.getSelectedDates();
+                final Date selDate = calendar.getSelectedDate();
+                if (!dates.contains(selDate)) {
+                    finish();
+                    Bundle b = new Bundle();
+                    b.putString("date", Fullformat.format(selDate));
+                    b.putString("driver_id", driver_id);
+                    Intent createOffDay = new Intent(OffDays.this, CreateOffDay.class);
+                    createOffDay.putExtras(b);
+                    startActivity(createOffDay);
+                } else {
+                    int pos = dates.indexOf(selDate);
+                    OffDay offDay=offDayList.get(pos);
+                    Snackbar.make(calendar, offDay.getReason()+"  "+offDay.getTime_start()+"-"+offDay.getTime_end(), Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
 
-                AlertDialog.Builder alert = new AlertDialog.Builder(OffDays.this);
-                final EditText edittext = new EditText(getApplicationContext());
-
-                alert.setTitle("Write a reason");
-
-                edittext.setTextColor(Color.BLACK);
-                alert.setView(edittext);
-                alert.setPositiveButton("Save", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        dates.addAll(selDates);
-                        for (int i = 0; i < selDates.size(); i++) {
-                            reasons.add(edittext.getText().toString());
-                        }
-                        calendar.highlightDates(selDates);
-                        Date startDate = selDates.get(0);
-                        Date endDate = selDates.get(selDates.size() - 1);
-                        Log.e("dates", startDate + "-" + endDate);
-
-                        Services.createOffday(OffDays.this, format.format(startDate), format.format(endDate), edittext.getText().toString(), driver_id);
-
-
-                    }
-                });
-
-                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        // what ever you want to do with No option.
-                    }
-                });
-
-                alert.show();
             } else {
                 Toast.makeText(getApplicationContext(), R.string.select_date, Toast.LENGTH_SHORT).show();
             }
@@ -187,12 +238,10 @@ public class OffDays extends AppCompatActivity {
                             case 100:
                                 Toast.makeText(OffDays.this, R.string.error_request, Toast.LENGTH_SHORT).show();
                                 break;
-                            case 300:
-                                Toast.makeText(OffDays.this, R.string.no_available_cars, Toast.LENGTH_SHORT).show();
-                                break;
+
                         }
 
-                        calendar.highlightDates(dates);
+
                         progressDialog.dismiss();
                     } catch (JSONException e) {
                         progressDialog.dismiss();
@@ -219,20 +268,18 @@ public class OffDays extends AppCompatActivity {
     }
 
     private void getDays(JSONArray array) {
-
-
         for (int i = 0; i < array.length(); i++) {
             try {
                 JSONObject obj = array.getJSONObject(i);
                 OffDay offDay = new OffDay();
                 offDay.setOffday_id(obj.getInt("offday_id"));
-
                 offDay.setReason(obj.getString("reason"));
-                Date sdate = format.parse(obj.getString("date_start"));
-                Date edate = format.parse(obj.getString("date_end"));
-                getDaysBetweenDates(sdate, edate, offDay.getReason());
-
-//                offDayList.add(offDay);
+                offDay.setTime_end(obj.getString("time_end"));
+                offDay.setTime_start(obj.getString("time_start"));
+                Date date = format.parse(obj.getString("date"));
+                offDay.setDate(date);
+                dates.add(date);
+                offDayList.add(offDay);
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (ParseException e) {
@@ -240,20 +287,22 @@ public class OffDays extends AppCompatActivity {
             }
         }
 
-    }
-
-    public void getDaysBetweenDates(Date startdate, Date enddate, String reason) {
-
-        Calendar calendar = new GregorianCalendar();
-        calendar.setTime(startdate);
-
-        while (calendar.getTime().before(enddate)) {
-            Date result = calendar.getTime();
-
-            dates.add(result);
-            reasons.add(reason);
-            calendar.add(Calendar.DATE, 1);
-        }
+        calendar.highlightDates(dates);
 
     }
+
+//    public void getDaysBetweenDates(Date startdate, Date enddate, String reason) {
+//
+//        Calendar calendar = new GregorianCalendar();
+//        calendar.setTime(startdate);
+//
+//        while (calendar.getTime().before(enddate)) {
+//            Date result = calendar.getTime();
+//
+//            dates.add(result);
+//            reasons.add(reason);
+//            calendar.add(Calendar.DATE, 1);
+//        }
+//
+//    }
 }

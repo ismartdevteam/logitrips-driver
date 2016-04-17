@@ -34,7 +34,14 @@
             android:singleLine="true"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
-
+        <ImageView
+            android:id="@+id/chat_det_location"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:src="@drawable/map_holder"/>
         <TextView
             android:id="@+id/chat_det_date"
             android:layout_width="match_parent"

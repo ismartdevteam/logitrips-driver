@@ -1,13 +1,15 @@
 package com.logitrips.driver.model;
 
+import java.util.List;
+
 /**
  * Created by Ulziiburen on 2/17/2016.
  */
-public class Trip {
+public class Trip implements java.io.Serializable {
     private int trip_id;
     private int trip_status;
 
-    private double total_fee;
+    private String total_fee;
 
     private String username;
     private String user_country;
@@ -23,6 +25,15 @@ public class Trip {
     private String time_pick;
     private String location_drop;
     private String time_drop;
+    private String details;
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
 
 
     public int getTrip_id() {
@@ -41,11 +52,11 @@ public class Trip {
         this.trip_status = trip_status;
     }
 
-    public double getTotal_fee() {
+    public String getTotal_fee() {
         return total_fee;
     }
 
-    public void setTotal_fee(double total_fee) {
+    public void setTotal_fee(String total_fee) {
         this.total_fee = total_fee;
     }
 

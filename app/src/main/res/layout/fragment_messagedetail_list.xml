@@ -7,12 +7,12 @@
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:background="@color/label_text"
         android:layout_height="match_parent"
         android:layout_above="@+id/chat_bottom"
+        android:background="@color/label_text"
+        android:cacheColorHint="@android:color/transparent"
         android:divider="@android:color/transparent"
         android:listSelector="@android:color/transparent"
-        android:cacheColorHint="@android:color/transparent"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" />
 
@@ -23,11 +23,23 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true">
 
+        <ImageButton
+            android:id="@+id/chat_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:background="@android:color/transparent"
+            android:padding="5dp"
+
+            android:src="@drawable/ic_action_location" />
+
         <EditText
             android:id="@+id/chat_edit"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:layout_toLeftOf="@+id/chat_send"
+            android:layout_toRightOf="@id/chat_location"
             android:gravity="center_vertical"
             android:hint="@string/write_message"
             android:padding="10dp"

@@ -6,6 +6,17 @@ package com.logitrips.driver.model;
 public class Chat {
     private int user_id;
     private int driver_id;
+    private String location;
+    private String message;
+    private long date_sent;
+    private int is_recv;
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
     public int getUser_id() {
         return user_id;
@@ -31,11 +42,11 @@ public class Chat {
         this.message = message;
     }
 
-    public String getDate_sent() {
+    public long getDate_sent() {
         return date_sent;
     }
 
-    public void setDate_sent(String date_sent) {
+    public void setDate_sent(long date_sent) {
         this.date_sent = date_sent;
     }
 
@@ -47,8 +58,6 @@ public class Chat {
         this.is_recv = is_recv;
     }
 
-    private String message;
-    private String date_sent;
-    private int is_recv;
+
 
 }

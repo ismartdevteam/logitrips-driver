@@ -3,12 +3,14 @@ package com.logitrips.driver.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,6 +19,12 @@ import com.logitrips.driver.R;
 import com.logitrips.driver.model.Chat;
 import com.logitrips.driver.util.CircleImageView;
 import com.logitrips.driver.util.MySingleton;
+import com.logitrips.driver.util.Utils;
+
+import org.joda.time.DateTime;
+import org.joda.time.Period;
+import org.joda.time.format.PeriodFormatter;
+import org.joda.time.format.PeriodFormatterBuilder;
 
 import java.util.List;
 
@@ -42,21 +50,23 @@ public class ChatAdapter extends ArrayAdapter<Chat> {
         Holder hol = null;
         if (v == null) {
             hol = new Holder();
-                v = ((Activity) mContext).getLayoutInflater().inflate(
-                        R.layout.chat_driver, parent, false);
+            v = ((Activity) mContext).getLayoutInflater().inflate(
+                    R.layout.chat_driver, parent, false);
 
-            hol.lin=(LinearLayout)v.findViewById(R.id.chat_message_lin);
-            hol.main=(LinearLayout)v.findViewById(R.id.chat_main_lin);
+            hol.lin = (LinearLayout) v.findViewById(R.id.chat_message_lin);
+            hol.main = (LinearLayout) v.findViewById(R.id.chat_main_lin);
             hol.driver_image = (CircleImageView) v.findViewById(R.id.chat_det_driver_img);
             hol.text = (TextView) v.findViewById(R.id.chat_det_msg);
             hol.date = (TextView) v.findViewById(R.id.chat_det_date);
+            hol.location = (ImageView) v.findViewById(R.id.chat_det_location);
             v.setTag(hol);
         } else
             hol = (Holder) v.getTag();
         hol.text.setText(item.getMessage() + "");
-        hol.date.setText(item.getDate_sent() + "");
-        Log.i("is receive:"+item.is_recv()," message:"+item.getMessage());
-        if (item.is_recv()==1) {
+
+        hol.date.setText(Utils.getTimeAgo(item.getDate_sent()));
+        Log.i("is receive:" + item.is_recv(), " message:" + item.getMessage());
+        if (item.is_recv() == 1) {
             hol.driver_image.setVisibility(View.VISIBLE);
             hol.lin.setBackground(mContext.getResources().getDrawable(R.drawable.chat_driver));
             hol.text.setTextColor(Color.WHITE);
@@ -64,8 +74,7 @@ public class ChatAdapter extends ArrayAdapter<Chat> {
             hol.driver_image.setImageUrl(profile_pic, mImageLoader);
             hol.driver_image.setDefaultImageResId(R.drawable.nodriver);
             hol.main.setGravity(Gravity.LEFT);
-        }
-        else{
+        } else {
             hol.driver_image.setVisibility(View.GONE);
             hol.main.setGravity(Gravity.RIGHT);
             hol.lin.setBackground(mContext.getResources().getDrawable(R.drawable.chat_user));
@@ -73,11 +82,23 @@ public class ChatAdapter extends ArrayAdapter<Chat> {
             hol.date.setTextColor(mContext.getResources().getColor(R.color.chat_text_gray));
         }
 
+        if (!TextUtils.isEmpty(item.getLocation())) {
+            hol.text.setVisibility(View.GONE);
+            hol.location.setVisibility(View.VISIBLE);
+            hol.location.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String[] loc = item.getLocation().split(",");
+                    Utils.openMapIntent(mContext, loc[0], loc[1]);
+                }
+            });
+        }
         return v;
     }
 
     class Holder {
         CircleImageView driver_image;
+        ImageView location;
         TextView text;
         TextView date;
         LinearLayout lin;

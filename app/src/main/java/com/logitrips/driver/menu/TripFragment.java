@@ -151,6 +151,7 @@ public class TripFragment extends Fragment {
 
     }
 
+
     private void makeList() {
 
 
@@ -216,5 +217,6 @@ public class TripFragment extends Fragment {
 
         return super.onOptionsItemSelected(item);
     }
+
 
 }

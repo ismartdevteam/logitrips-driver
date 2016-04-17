@@ -23,7 +23,7 @@
         android:backgroundTint="@color/nav_back_sel"
         app:headerLayout="@layout/nav_header_main"
         app:itemBackground="@drawable/drawer_item"
-
+        android:background="@color/nav_back_sel"
         app:menu="@menu/activity_main_drawer"
         app:itemTextColor="@color/drawer_item"
         app:itemIconTint="@color/drawer_item"/>
