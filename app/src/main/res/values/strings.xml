@@ -1,37 +1,20 @@
 <resources>
+    <string name="app_name">Logitrips</string>
 
 
-
-    <string name="app_name">Logitrips Driver</string>
-    <string name="google_app_id">208010012022</string>
-
-    <string name="navigation_drawer_open">Open</string>
-    <string name="navigation_drawer_close">Close</string>
     <string name="no_net">No internet connection</string>
     <string name="title_activity_login">Login</string>
     <string name="facebook_app_id">496935957154005</string>
     <string name="car_image_url"></string>
-    <string name="trip_dates">Trip dates: </string>
-    <string name="booking_date">Booking date: </string>
     <string name="driver_image_url"></string>
     <string name="current">Current</string>
     <string name="mytrips">My Trips</string>
     <string name="past">Past</string>
     <string name="messages">Messages</string>
-    <string name="trips">Trips</string>
-    <string name="sub_location">Sub location</string>
-    <string name="purpose">Purpose</string>
-    <string name="car_maker">Car maker</string>
-    <string name="car_model">Car model</string>
-    <string name="car_year">Car year</string>
-    <string name="price_per_hour">Price per hour</string>
-
-    <string name="select_off_days_and_reason">Select busy days in this month and write \nreason on choosen days</string>
-    <string name="select_date_take_reason">Select date to take reason</string>
-    <string name="remove_off_day">Remove off day</string>
-
     <!-- Strings related to login -->
     <string name="no_comment">No comment</string>
+    <string name="add_day">ADD DAY</string>
+    <string name="booking_detail">Booking detail</string>
     <string name="choose_filter">Choose filter</string>
     <string name="no_messages">No Messages</string>
     <string name="class_type">Class type</string>
@@ -46,14 +29,13 @@
     <string name="lang_skills">Language skills</string>
     <string name="car_info">Car info</string>
     <string name="car_model_year">Car model,year</string>
-    <string name="car_type">Car type</string>
-    <string name="hourly_fee">Hourly fee</string>
-    <string name="daily_fee">Daily fee</string>
+    <string name="car_type">Car class</string>
+    <string name="hourly_fee">Hourly price</string>
+    <string name="daily_fee">Daily fee (10 hours)</string>
     <string name="tourist_info">Tourist info</string>
     <string name="your_trip">Your trip</string>
     <string name="your_fullname">Your fullname</string>
     <string name="your_email">Your e-mail address</string>
-    <string name="address">Address</string>
     <string name="your_phone">Your phone number</string>
     <string name="start_date">Start date</string>
     <string name="end_date">End date</string>
@@ -62,7 +44,6 @@
     <string name="car">Car</string>
     <string name="driver">Driver</string>
     <string name="total_price">Total price</string>
-    <string name="total_fee">Total fee</string>
     <string name="trip_info">Trip info</string>
     <string name="date">Date</string>
     <string name="duration">Duration</string>
@@ -71,38 +52,30 @@
     <string name="average_rating">Average rating</string>
     <string name="book_this_car">Book this car</string>
     <string name="changed_password_successfully">Successfully changed password</string>
-    <string name="create_off_successfully">Successfully created off days</string>
-    <string name="successfully_approved">Successfully approved</string>
-    <string name="successfully_desclined">Successfully declined</string>
-    <string name="select_location">Please select location</string>
-    <string name="delete_off_successfully">Successfully deleted</string>
     <string name="incorrect_current">Current password incorrect</string>
     <string name="no_available_trips">No available trips</string>
     <string name="no_available_cars">No available cars</string>
     <string name="error_request">Error request</string>
     <string name="sign_up">sign up</string>
     <string name="favourite">Favourite</string>
+    <string name="add">Add</string>
     <string name="select_date">Select Date</string>
-    <string name="log_out">Sign out</string>
-    <string name="create_off_day">create off day</string>
+    <string name="log_out">log out</string>
     <string name="firstname">firstname</string>
     <string name="lastname">lastname</string>
+    <string name="fullname">Full name</string>
     <string name="phone">phone</string>
+    <string name="phone_number">phone number</string>
     <string name="or_sign_in">or sign with</string>
-    <string name="reason">Reason</string>
     <string name="main_url">http://dev.logitrips.com</string>
     <string name="phone_cap">Phone</string>
-    <string name="write_reason">Write a reason</string>
     <string name="approved">Approved</string>
-    <string name="approve">Approve</string>
-    <string name="set_start_end_time">Set start and end time</string>
     <string name="current_password">Current password</string>
     <string name="new_password">New password</string>
     <string name="enter_valid_date">Please enter valid Date</string>
     <string name="confirm_new_password">confirm new password</string>
     <string name="change_my_pass">change my password</string>
     <string name="account">Account</string>
-    <string name="create">Create</string>
     <string name="status">Status</string>
     <string name="password_cap">Password</string>
     <string name="save">Save</string>
@@ -125,16 +98,16 @@
     <string name="drop_off_date">Drop off Date</string>
     <string name="pick_up_date">Pick up Date</string>
     <string name="pick_up_loc">Pick up location</string>
+    <string name="select_location">Please select location</string>
     <string name="pick_up_time">Pick up time</string>
     <string name="drop_loc">Drop location</string>
     <string name="trip_detail">Trip detail</string>
-    <string name="trip_details">Trip details</string>
     <string name="drop_time">Drop off time</string>
     <string name="forget_password">forgot password?</string>
     <string name="prompt_email">Email Address</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_in_short">log in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
@@ -149,19 +122,15 @@
     <string name="title_section3">Section 3</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="really_want_logout">Do you really want to logout?</string>
+
     <string name="action_settings">Settings</string>
 
     <string name="title_activity_search_tour">SearchTourAc</string>
-    <string name="title_activity_menu">MenuAc</string>
+    <string name="title_activity_menu">Home</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_car_detail">CarDetailAc</string>
     <string name="title_activity_tourist_info">TouristInfo</string>
     <string name="title_activity_trip_detail_cancel">TripDetailCancel</string>
-    <string name="title_activity_off_days">Off days</string>
-    <string name="title_activity_create_off_day">CreateOffDay</string>
-    <string name="title_activity_create_off">CreateOff</string>
-    <string name="title_activity_maps">Map</string>
 </resources>

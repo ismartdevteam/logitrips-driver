@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
 
-    <com.logitrips.driver.util.CircleImageView
+    <com.logitrips.userapp.util.CircleImageView
         android:id="@+id/messages_driver_img"
         android:layout_width="70dp"
         android:layout_height="70dp"

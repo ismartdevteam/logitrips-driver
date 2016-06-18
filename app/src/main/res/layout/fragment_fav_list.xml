@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools" >
+    <RelativeLayout
+        android:layout_width="@dimen/abc_action_bar_default_height_material"
+        android:layout_height="match_parent"
+        android:background="@color/menu_back"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/menu_home_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="10dp"
+            android:src="@drawable/home_btn"
+            />
+
+        <ImageView
+            android:id="@+id/menu_trip_btn"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/menu_home_btn"
+            android:layout_height="wrap_content"
+
+            android:layout_centerHorizontal="true"
+            android:paddingTop="10dp"
+
+            android:src="@drawable/my_trip_btn" />
+
+        <ImageView
+            android:id="@+id/menu_fav_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/menu_home_btn"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            android:paddingTop="10dp"
+            android:src="@drawable/fav_btn" />
+
+        <ImageView
+            android:id="@+id/menu_message_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/menu_trip_btn"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="10dp"
+            android:src="@drawable/message_btn" />
+
+        <ImageView
+            android:id="@+id/menu_account_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/account_btn" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:padding="15dp"
+            android:layout_centerHorizontal="true"
+            android:text="@string/no_available_trips"
+            android:layout_height="wrap_content"
+            />
+
+        <android.support.v7.widget.RecyclerView
+    android:id="@+id/favlist"
+    android:name="com.logitrips.userapp.menu.FavFragment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layoutManager="LinearLayoutManager"
+    tools:context="com.logitrips.userapp.menu.FavFragment"
+    tools:listitem="@layout/car_item" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,13 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:background="@android:color/white"
-    tools:context="com.logitrips.driver.menu.MessageFragment">
+    tools:context="com.logitrips.userapp.menu.MessageFragment">
 
+    <RelativeLayout
+        android:layout_width="@dimen/abc_action_bar_default_height_material"
+        android:layout_height="match_parent"
+        android:background="@color/menu_back"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/menu_trip_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/menu_home_btn"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="10dp"
+            android:src="@drawable/my_trip_btn" />
+
+        <ImageView
+            android:id="@+id/menu_home_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="10dp"
+            android:layout_alignParentTop="true"
+
+            android:src="@drawable/home_btn"
+       />
+
+        <ImageView
+            android:id="@+id/menu_fav_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/menu_trip_btn"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="10dp"
+            android:src="@drawable/fav_btn" />
+
+        <ImageView
+            android:id="@+id/menu_message_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/menu_fav_btn"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="10dp"
+            android:visibility="gone"
+            android:src="@drawable/message_btn" />
+
+        <ImageView
+            android:id="@+id/menu_account_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/account_btn" />
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -16,22 +69,19 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="match_parent">
-
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:padding="15dp"
-                android:text="@string/no_messages" />
+                android:layout_centerHorizontal="true"
+                android:text="@string/no_messages"
+                android:layout_height="wrap_content"
+                />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/messenger_list"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
                 android:name="com.logitrips.userapp.menu.MessageFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 app:layoutManager="LinearLayoutManager"
                 tools:context="com.logitrips.userapp.menu.MessageFragment"
                 tools:listitem="@layout/messenger_item" />

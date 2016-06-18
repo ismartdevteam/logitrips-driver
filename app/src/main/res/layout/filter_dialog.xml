@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+
+    android:background="@drawable/dialog_back"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/choose_filter"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="Language"
+            android:textColor="@color/text_gray" />
+
+        <Spinner
+            android:id="@+id/filter_dialog_lang_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="20dp"
+            android:text="Car class"
+            android:textColor="@color/text_gray" />
+
+        <info.hoang8f.android.segmented.SegmentedGroup
+            android:id="@+id/filter_class_type_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            android:paddingTop="10dp"
+            segmentedgroup:sc_border_width="2dp"
+            segmentedgroup:sc_checked_text_color="@android:color/white"
+            segmentedgroup:sc_corner_radius="10dp"
+            segmentedgroup:sc_tint_color="@color/orange">
+
+            <RadioButton
+                android:id="@+id/filter_class_any_btn"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/any"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/filter_class_mpv_btn"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mpv"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/filter_class_suv_btn"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="suv"
+                android:textSize="12sp" />
+
+        </info.hoang8f.android.segmented.SegmentedGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="20dp"
+            android:text="Smoke"
+            android:textColor="@color/text_gray" />
+
+        <info.hoang8f.android.segmented.SegmentedGroup
+            android:id="@+id/filter_smoke_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            android:paddingTop="10dp"
+            segmentedgroup:sc_border_width="2dp"
+            segmentedgroup:sc_checked_text_color="@android:color/white"
+            segmentedgroup:sc_corner_radius="10dp"
+            segmentedgroup:sc_tint_color="@color/orange">
+
+            <RadioButton
+                android:id="@+id/filter_smoke_any_btn"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/any"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/filter_smoke_no_btn"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="no"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/filter_smoke_yes_btn"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="yes"
+                android:textSize="12sp" />
+
+        </info.hoang8f.android.segmented.SegmentedGroup>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/filter_apply_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="10dp"
+        android:background="@color/orange"
+        android:text="@string/apply_filter"
+        android:textColor="@android:color/white" />
+
+
+</LinearLayout>

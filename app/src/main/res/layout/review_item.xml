@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/review_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dsada"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_gravity="right"
+        android:textColor="@color/orange"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
+        <TextView
+            android:id="@+id/review_comment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/review_img"
+            android:layout_alignParentLeft="true"
+            android:textColor="@android:color/black"
+            android:text="23232"/>
+        <com.logitrips.userapp.util.CircleImageView
+            android:id="@+id/review_img"
+            android:layout_width="95dp"
+            android:layout_alignParentRight="true"
+
+            android:src="@drawable/menu_account"
+            android:layout_height="95dp"
+            app:border_color="@android:color/transparent"
+            app:border_width="0dp" />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/review_date"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_gray"/>
+</LinearLayout>
